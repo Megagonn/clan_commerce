@@ -4,7 +4,7 @@ An e-commerce UI challenge.
 
 # Get APK file
 
-![Download the APK file](https://github.com/megagonn/clan_commerce/blob/main/cc.apk?raw=true)
+- [Download the APK file](https://github.com/megagonn/clan_commerce/blob/main/cc.apk)
 
 # screen shots
 
