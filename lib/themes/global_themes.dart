@@ -1,5 +1,6 @@
 // ignore_for_file: unused_field
 
+import 'package:clan_commerce/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 
 abstract class GlobalColors {
@@ -33,20 +34,20 @@ abstract class AppTheme {
         // colorScheme: ColorScheme.fromSeed(seedColor: GlobalColors.primary),
         useMaterial3: true,
         visualDensity: visualDensity,
-        textTheme: const TextTheme(
+        textTheme:  TextTheme(
           displaySmall: TextStyle(
               fontFamily: "Aeonik",
-              fontSize: 14,
+              fontSize: getFontSize(14),
               fontWeight: FontWeight.w400,
               color: GlobalColors.primary),
           displayMedium: TextStyle(
               fontFamily: "Aeonik",
-              fontSize: 16,
+              fontSize: getFontSize(16),
               fontWeight: FontWeight.w500,
               color: GlobalColors.primary),
           displayLarge: TextStyle(
               fontFamily: "Aeonik",
-              fontSize: 20,
+              fontSize: getFontSize(20),
               fontWeight: FontWeight.w700,
               color: GlobalColors.primary),
         ),
@@ -57,19 +58,19 @@ abstract class AppTheme {
         // ),
         scaffoldBackgroundColor: _LightColors.background,
         primarySwatch: Colors.yellow,
-        appBarTheme: const AppBarTheme(
+        appBarTheme:  AppBarTheme(
             elevation: 0,
             centerTitle: false,
             titleTextStyle:
-                TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                TextStyle(fontSize: getFontSize(25), fontWeight: FontWeight.bold),
             foregroundColor: _DarkColors.background,
             backgroundColor: GlobalColors.white),
         cardColor: _LightColors.background,
-        primaryTextTheme: const TextTheme(
+        primaryTextTheme:  TextTheme(
           // headline6: const TextStyle(color: GlobalColors.textDark),
           displayLarge: TextStyle(
               color: GlobalColors.primary,
-              fontSize: 20,
+              fontSize: getFontSize(20),
               fontWeight: FontWeight.w700),
         ),
         iconTheme: const IconThemeData(color: GlobalColors.primary),
