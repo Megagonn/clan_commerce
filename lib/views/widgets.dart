@@ -98,7 +98,7 @@ class ItemGrid extends StatelessWidget {
     StockItemModel itemModel = StockItemModel.fromJson(item);
     return InkWell(
       onTap: () async {
-        ///isInCart method check if the item clicked on is already added to cart and 
+        ///isInCart method check if the item clicked on is already added to cart and
         ///notify the ItemDetails screen, allowing increment or decrement in item count.
         await context.read<CartProvider>().isInCart(itemModel.itemId);
         await context.read<CartProvider>().getEachItemCount(itemModel.itemId);
@@ -129,10 +129,15 @@ class ItemGrid extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                itemModel.name,
-                style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                    color: GlobalColors.textLight, fontWeight: FontWeight.w600),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * .3,
+                child: Text(
+                  itemModel.name,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                      color: GlobalColors.textLight,
+                      fontWeight: FontWeight.w600),
+                ),
               ),
               Row(
                 children: [
