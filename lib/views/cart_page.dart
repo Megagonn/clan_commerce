@@ -61,51 +61,46 @@ class _CartPageState extends State<CartPage> {
           ),
         ],
       ),
-      body: Column(
+      body: ListView(
         children: [
-          SingleChildScrollView(
-            child: SizedBox(
-              child: Consumer<CartProvider>(
-                builder: (context, value, _) => Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Visibility(
-                      ///If the cart is empty, this UI is displayed.
-                      visible: value.cart.isEmpty,
-                      child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              height: getVerticalSize(50),
-                            ),
-                            const Icon(
-                              CupertinoIcons.cart,
-                              size: 100,
-                              color: GlobalColors.primary,
-                            ),
-                            Text(
-                              'Your cart is empty.',
-                              style: Theme.of(context).textTheme.displayLarge,
-                            ),
-                            TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: const Text("Goto Products")),
-                          ],
+          Consumer<CartProvider>(
+            builder: (context, value, _) => Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Visibility(
+                  ///If the cart is empty, this UI is displayed.
+                  visible: value.cart.isEmpty,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: getVerticalSize(50),
                         ),
-                      ),
+                        const Icon(
+                          CupertinoIcons.cart,
+                          size: 100,
+                          color: GlobalColors.primary,
+                        ),
+                        Text(
+                          'Your cart is empty.',
+                          style: Theme.of(context).textTheme.displayLarge,
+                        ),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text("Goto Products")),
+                      ],
                     ),
-                    ...List.generate(value.cart.length, (i) {
-                      CartItemModel model =
-                          CartItemModel.fromJson(value.cart[i]);
-
-                      return _cartTile(context, model);
-                    })
-                  ],
+                  ),
                 ),
-              ),
+                ...List.generate(value.cart.length, (i) {
+                  CartItemModel model = CartItemModel.fromJson(value.cart[i]);
+
+                  return _cartTile(context, model);
+                })
+              ],
             ),
           ),
           const Spacer(),
