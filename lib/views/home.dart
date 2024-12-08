@@ -251,7 +251,7 @@ class _CCHomeState extends State<CCHome> {
                     Container(
                       padding: getPadding(all: 10),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(50),
                           color: GlobalColors.white),
                       child: Row(
                         children: [
