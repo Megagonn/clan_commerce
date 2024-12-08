@@ -13,6 +13,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 
 import 'cart_page.dart';
+import 'widgets.dart';
 
 class CCHome extends StatefulWidget {
   const CCHome({super.key});
@@ -144,81 +145,13 @@ class _CCHomeState extends State<CCHome> {
                   ...List.generate(items.length, (i) {
                     return items.isEmpty
                         ? const Text('no item')
-                        : _itemGird(items[i]);
+                        : ItemGrid(context: context, item: items[i]);
                   })
                 ],
               ),
             )
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _itemGird(Map item) {
-    StockItemModel itemModel = StockItemModel.fromJson(item);
-    return InkWell(
-      onTap: () async {
-        await context.read<CartProvider>().isInCart(itemModel.itemId);
-        await context.read<CartProvider>().getEachItemCount(itemModel.itemId);
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    StockItemDetails(stockItemModel: itemModel)));
-      },
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: getPadding(all: 10),
-            margin: getMargin(bottom: 10),
-            width: double.maxFinite,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: GlobalColors.gray,
-            ),
-            child: Image.asset(
-              itemModel.image,
-              height: getVerticalSize(200),
-              fit: BoxFit.contain,
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                itemModel.name,
-                style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                    color: GlobalColors.textLight, fontWeight: FontWeight.w600),
-              ),
-              Row(
-                children: [
-                  const Icon(
-                    CupertinoIcons.star_fill,
-                    color: Colors.orangeAccent,
-                    size: 14,
-                  ),
-                  SizedBox(
-                    width: getHorizontalSize(5),
-                  ),
-                  Text(
-                    itemModel.rates.toString(),
-                    style: Theme.of(context).textTheme.displayMedium,
-                  ),
-                ],
-              )
-            ],
-          ),
-          SizedBox(
-            height: getVerticalSize(10),
-          ),
-          Text(
-            "\$${itemModel.discountPrice}",
-            style: Theme.of(context).textTheme.displayLarge,
-          )
-        ],
       ),
     );
   }
