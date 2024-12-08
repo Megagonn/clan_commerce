@@ -45,7 +45,7 @@ class _CartPageState extends State<CartPage> {
         leadingWidth: 80,
         title: Text(
           "My cart",
-          style: Theme.of(context).textTheme.displayMedium,
+          style: Theme.of(context).textTheme.displayLarge,
         ),
         centerTitle: true,
         automaticallyImplyLeading: false,
@@ -67,6 +67,9 @@ class _CartPageState extends State<CartPage> {
             builder: (context, value, _) => Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                SizedBox(
+                  height: getVerticalSize(20),
+                ),
                 Visibility(
                   ///If the cart is empty, this UI is displayed.
                   visible: value.cart.isEmpty,
@@ -103,7 +106,7 @@ class _CartPageState extends State<CartPage> {
               ],
             ),
           ),
-          const Spacer(),
+          // const Spacer(),
           _promocode(context),
           Column(
             children: [
@@ -200,7 +203,7 @@ class _CartPageState extends State<CartPage> {
                   builder: (context) => AlertDialog(
                     // color: GlobalColors.transparent,
                     content: Container(
-                      padding: getPadding(all: 20),
+                      padding: getPadding(all: 15),
                       // margin: getMargin(all: 20),
                       // height: 200,
                       decoration: BoxDecoration(
