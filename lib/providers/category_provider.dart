@@ -10,7 +10,7 @@ class CategoryProvider extends ChangeNotifier {
   List get items => _items;
 
   setCategory(String category) {
-    print(category);
+    // print(category);
     _category = category;
 
     notifyListeners();

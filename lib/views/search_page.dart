@@ -1,4 +1,4 @@
-import 'package:clan_commerce/models/stock_item_model.dart';
+// import 'package:clan_commerce/models/stock_item_model.dart';
 import 'package:clan_commerce/providers/search_provider.dart';
 import 'package:clan_commerce/themes/global_themes.dart';
 import 'package:clan_commerce/utils/size_utils.dart';

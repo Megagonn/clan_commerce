@@ -1,5 +1,4 @@
-
-
+import 'package:clan_commerce/providers/bnb_provider.dart';
 import 'package:clan_commerce/providers/cart_provider.dart';
 import 'package:clan_commerce/providers/category_provider.dart';
 import 'package:clan_commerce/providers/search_provider.dart';
@@ -10,10 +9,11 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(MultiProvider(
-    providers:[
-      ChangeNotifierProvider(create: (context)=> CategoryProvider()),
-      ChangeNotifierProvider(create: (context)=> CartProvider()),
-      ChangeNotifierProvider(create: (context)=> SearchProvider()),
+    providers: [
+      ChangeNotifierProvider(create: (context) => CategoryProvider()),
+      ChangeNotifierProvider(create: (context) => CartProvider()),
+      ChangeNotifierProvider(create: (context) => SearchProvider()),
+      ChangeNotifierProvider(create: (context) => BNBProvider()),
     ],
     child: const MyApp(),
   ));
@@ -32,4 +32,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

@@ -1,13 +1,14 @@
 // import 'dart:developer';
 
-import 'package:clan_commerce/models/stock_item_model.dart';
+// import 'package:clan_commerce/models/stock_item_model.dart';
+import 'package:clan_commerce/providers/bnb_provider.dart';
 import 'package:clan_commerce/providers/cart_provider.dart';
 import 'package:clan_commerce/providers/category_provider.dart';
 import 'package:clan_commerce/providers/search_provider.dart';
 import 'package:clan_commerce/stock.dart';
 import 'package:clan_commerce/themes/global_themes.dart';
 import 'package:clan_commerce/utils/size_utils.dart';
-import 'package:clan_commerce/views/item_details.dart';
+// import 'package:clan_commerce/views/item_details.dart';
 import 'package:clan_commerce/views/search_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -80,6 +81,25 @@ class _CCHomeState extends State<CCHome> {
               ],
             ),
           )
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) {
+          context.read<BNBProvider>().setIndex(value);
+        },
+        currentIndex: context.watch<BNBProvider>().currentIndex,
+        selectedItemColor: GlobalColors.green,
+        unselectedItemColor: GlobalColors.primary,
+        showUnselectedLabels: true,
+        items: const [
+          BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.home), label: "Home"),
+          BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.search), label: "Search"),
+          BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.heart), label: "Favorites"),
+          BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.person), label: "Profile"),
         ],
       ),
       body: SingleChildScrollView(
