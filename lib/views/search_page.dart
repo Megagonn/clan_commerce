@@ -9,6 +9,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 
 class CCSearchPage extends StatefulWidget {
+  /// Search screen displays the list of items from search result.
   const CCSearchPage({super.key, required this.keyword});
   final String keyword;
 
@@ -35,6 +36,7 @@ class _CCSearchPageState extends State<CCSearchPage> {
           child: SearchBar(
             controller: keyword,
             onChanged: (value) {
+              ///onChanged of the user's input, the search result also changes.
               context.read<SearchProvider>().searchItems(keyword.text);
             },
             shape: WidgetStateProperty.all(
@@ -62,6 +64,8 @@ class _CCSearchPageState extends State<CCSearchPage> {
             SizedBox(
               height: getVerticalSize(50),
             ),
+
+            /// Displayed if the search result is empty
             Visibility(
               visible: value.searchResult.isEmpty,
               child: Center(

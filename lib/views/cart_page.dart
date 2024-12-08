@@ -12,6 +12,8 @@ import 'package:provider/provider.dart';
 import 'widgets.dart';
 
 class CartPage extends StatefulWidget {
+  ///The cart page displays all items in cart
+  ///Item can be removed, increased or decreased.
   const CartPage({super.key});
 
   @override
@@ -21,7 +23,6 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     context.read<CartProvider>().getTotal();
   }
@@ -64,12 +65,12 @@ class _CartPageState extends State<CartPage> {
         children: [
           SingleChildScrollView(
             child: SizedBox(
-              // height: MediaQuery.of(context).size.height * .45,
               child: Consumer<CartProvider>(
                 builder: (context, value, _) => Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Visibility(
+                      ///If the cart is empty, this UI is displayed.
                       visible: value.cart.isEmpty,
                       child: Center(
                         child: Column(

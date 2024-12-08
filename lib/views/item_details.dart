@@ -10,6 +10,8 @@ import 'package:provider/provider.dart';
 import 'widgets.dart';
 
 class StockItemDetails extends StatefulWidget {
+  ///ItemDetails screen shows the user the details of selected item
+  ///user can add the item to cart.
   const StockItemDetails({super.key, required this.stockItemModel});
   final StockItemModel stockItemModel;
 
@@ -121,7 +123,7 @@ class _StockItemDetailsState extends State<StockItemDetails> {
                   ),
                   VariantsTile(variants: widget.stockItemModel.specs),
                   const Spacer(),
-                  Divider(
+                  const Divider(
                     color: GlobalColors.gray,
                   ),
                   SizedBox(
@@ -156,6 +158,9 @@ class _StockItemDetailsState extends State<StockItemDetails> {
                         child: SizedBox(
                           height: 60,
                           child: context.watch<CartProvider>().inCart
+
+                              ///if the item is in cart already, display increment and decrement buttons
+                              ///else the user see the Add to cart button
                               ? Consumer<CartProvider>(
                                   builder: (context, value, _) => Row(
                                         mainAxisAlignment:
@@ -196,6 +201,7 @@ class _StockItemDetailsState extends State<StockItemDetails> {
                                       ))
                               : ElevatedButton(
                                   onPressed: () async {
+                                    ///set new item to cart
                                     await context.read<CartProvider>().setcart(
                                         widget.stockItemModel.toJson());
                                     await context
@@ -214,8 +220,6 @@ class _StockItemDetailsState extends State<StockItemDetails> {
                                         ),
                                       ),
                                     ),
-
-                                    // maximumSize: WidgetStateProperty.all(Size(100, 40)),
                                   ),
                                   child: Text(
                                     "Add to cart",
@@ -277,6 +281,8 @@ class _StockItemDetailsState extends State<StockItemDetails> {
 }
 
 class VariantsTile extends StatefulWidget {
+  ///It displays the variant of the selected item and nothing 
+  ///if no variant ot available
   const VariantsTile({super.key, required this.variants});
   final List variants;
 
@@ -301,12 +307,12 @@ class _VariantsTileState extends State<VariantsTile> {
         scrollDirection: Axis.horizontal,
         itemCount: widget.variants.length,
         itemBuilder: (context, index) =>
-            _categoryChipTile(widget.variants[index]),
+            _variantChipTile(widget.variants[index]),
       ),
     );
   }
 
-  Widget _categoryChipTile(String variant) {
+  Widget _variantChipTile(String variant) {
     return Container(
       margin: getMargin(right: 7),
       child: ElevatedButton(
@@ -318,7 +324,6 @@ class _VariantsTileState extends State<VariantsTile> {
           backgroundColor: WidgetStateProperty.all(
             selected == variant ? GlobalColors.green : GlobalColors.white,
           ),
-          // maximumSize: WidgetStateProperty.all(Size(100, 40)),
           padding: WidgetStateProperty.all(
             getPadding(
               top: selected == variant ? 2 : 0,

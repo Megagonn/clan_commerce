@@ -85,6 +85,7 @@ class _CCHomeState extends State<CCHome> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
+          ///change the index of the bottom nav bar
           context.read<BNBProvider>().setIndex(value);
         },
         currentIndex: context.watch<BNBProvider>().currentIndex,
@@ -298,6 +299,8 @@ class _CCHomeState extends State<CCHome> {
   }
 
   Widget _chips() {
+    ///Category button group
+    ///
     List categories = [];
 
     gadgets.forEach((element) {
@@ -367,6 +370,7 @@ class _CCHomeState extends State<CCHome> {
   }
 
   Widget _categoryChipTile(List<dynamic> categories, int i) {
+    ///category button widget
     return Consumer<CategoryProvider>(
         builder: (context, value, _) => Container(
               margin: getMargin(right: 7),

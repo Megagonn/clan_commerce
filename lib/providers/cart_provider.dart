@@ -13,6 +13,7 @@ class CartProvider extends ChangeNotifier {
   double _total = 0;
   double get total => _total;
 
+  ///This method add new item to cart.
   setcart(Map cart) async {
     cart['count'] = 1;
     SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -24,6 +25,7 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  ///This method empty the cart
   clearCart() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.setString('cart', jsonEncode([]));
@@ -41,6 +43,7 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  ///This method calculate the total price of items in cart
   getTotal() async {
     _total = 0;
     SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -53,6 +56,7 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  ///This method check if the item displayed in ItemDetails is already in cart.
   isInCart(String id) async {
     _inCart = false;
     SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -70,6 +74,7 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  ///This method increase the count of selected item in cart
   increment(String id) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     List fetchCart = jsonDecode(preferences.getString('cart') ?? "[]");
@@ -86,6 +91,7 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  ///This method decrease the count of selected item in cart
   decrement(String id) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     List fetchCart = jsonDecode(preferences.getString('cart') ?? "[]");
@@ -102,6 +108,7 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  ///This method remove items from cart
   remove(String id) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     List fetchCart = jsonDecode(preferences.getString('cart') ?? "[]");

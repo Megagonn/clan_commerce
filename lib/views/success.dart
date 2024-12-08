@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CCSuccess extends StatelessWidget {
+  /// UI displayed after a successful checkout
   const CCSuccess({super.key});
 
   @override

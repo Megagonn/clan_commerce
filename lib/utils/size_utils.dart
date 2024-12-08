@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
-// This is where the magic happens.
 // This functions are responsible to make UI responsive across all the mobile devices.
 
 Size size = WidgetsBinding.instance.window.physicalSize /
     WidgetsBinding.instance.window.devicePixelRatio;
 
-// Caution! If you think these are static values and are used to build a static UI,  you mustn’t.
-// These are the Viewport values of your Figma Design.
-// These are used in the code as a reference to create your UI Responsively.
+// These are the Viewport values of the Figma Design.
+// These are used in the code as a reference to create a UI Responsively.
 const num designWIDTH = 414;
 const num designHEIGHT = 896;
 const num designSTATUSBAR = 0;

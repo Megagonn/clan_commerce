@@ -1,5 +1,5 @@
-// ignore_for_file: must_be_immutable
-
+// ignore_for_file: must_be_immutable, dangling_library_doc_comments, use_build_context_synchronously
+/// this file contains some of the general[reusable] widgets
 import 'package:clan_commerce/models/stock_item_model.dart';
 import 'package:clan_commerce/providers/cart_provider.dart';
 import 'package:clan_commerce/themes/global_themes.dart';
@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ActionButton extends StatelessWidget {
+  ///The ActionButton is a main used for actions in app bars
+  ///
   ActionButton({
     super.key,
     required this.iconData,
@@ -48,6 +50,8 @@ class ActionButton extends StatelessWidget {
 }
 
 class CartButton extends StatelessWidget {
+  ///CartButton is used in the cart screen
+  ///Color is used as iconColor if null.
   CartButton(
       {super.key,
       required this.action,
@@ -79,6 +83,7 @@ class CartButton extends StatelessWidget {
 }
 
 class ItemGrid extends StatelessWidget {
+  ///ItemGrid is a widget that display each items in the Home and search screens.
   const ItemGrid({
     super.key,
     required this.context,
@@ -93,6 +98,8 @@ class ItemGrid extends StatelessWidget {
     StockItemModel itemModel = StockItemModel.fromJson(item);
     return InkWell(
       onTap: () async {
+        ///isInCart method check if the item clicked on is already added to cart and 
+        ///notify the ItemDetails screen, allowing increment or decrement in item count.
         await context.read<CartProvider>().isInCart(itemModel.itemId);
         await context.read<CartProvider>().getEachItemCount(itemModel.itemId);
         Navigator.push(

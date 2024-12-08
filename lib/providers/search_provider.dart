@@ -11,10 +11,10 @@ class SearchProvider extends ChangeNotifier {
   List get searchResult => _searchResult;
   List get items => _items;
 
-  searchItems(String search) {
+  searchItems(String keyword) {
     // print(search);
-
-    _searchResult = _items.where((item)=> item['name'].toString().toLowerCase().contains(search.toLowerCase()) || item['description'].toString().toLowerCase().contains(search.toLowerCase())).toList();
+  ///Filter the item list with supplied keyword.
+    _searchResult = _items.where((item)=> item['name'].toString().toLowerCase().contains(keyword.toLowerCase()) || item['description'].toString().toLowerCase().contains(keyword.toLowerCase())).toList();
 
     notifyListeners();
   }
