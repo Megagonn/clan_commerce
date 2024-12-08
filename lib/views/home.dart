@@ -3,10 +3,12 @@
 import 'package:clan_commerce/models/stock_item_model.dart';
 import 'package:clan_commerce/providers/cart_provider.dart';
 import 'package:clan_commerce/providers/category_provider.dart';
+import 'package:clan_commerce/providers/search_provider.dart';
 import 'package:clan_commerce/stock.dart';
 import 'package:clan_commerce/themes/global_themes.dart';
 import 'package:clan_commerce/utils/size_utils.dart';
 import 'package:clan_commerce/views/item_details.dart';
+import 'package:clan_commerce/views/search_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -23,6 +25,7 @@ class CCHome extends StatefulWidget {
 }
 
 class _CCHomeState extends State<CCHome> {
+  TextEditingController keyword = TextEditingController();
   String selected = 'all';
   // List items = gadgets;
 
@@ -86,6 +89,27 @@ class _CCHomeState extends State<CCHome> {
             Container(
               padding: getPadding(all: 20),
               child: SearchBar(
+                controller: keyword,
+                onChanged: (value) {
+                  setState(() {});
+                },
+                onSubmitted: (value) {
+                  value.trim().isEmpty
+                      ? null
+                      : () {
+                          context
+                              .read<SearchProvider>()
+                              .searchItems(keyword.text);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  CCSearchPage(keyword: value),
+                            ),
+                          );
+                          keyword.clear();
+                        }();
+                },
                 shape: WidgetStateProperty.all(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -100,7 +124,29 @@ class _CCHomeState extends State<CCHome> {
                       .displayMedium!
                       .copyWith(color: GlobalColors.textLight),
                 ),
-                trailing: [const Icon(CupertinoIcons.search)],
+                trailing: [
+                  InkWell(
+                    onTap: keyword.text.trim().isEmpty
+                        ? null
+                        : () {
+                            context
+                                .read<SearchProvider>()
+                                .searchItems(keyword.text);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        CCSearchPage(keyword: keyword.text)));
+                            keyword.clear();
+                          },
+                    child: Icon(
+                      CupertinoIcons.search,
+                      color: keyword.text.trim().isEmpty
+                          ? null
+                          : GlobalColors.green,
+                    ),
+                  )
+                ],
               ),
             ),
             _hero(context),
@@ -114,7 +160,14 @@ class _CCHomeState extends State<CCHome> {
                     style: Theme.of(context).textTheme.displayLarge,
                   ),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<SearchProvider>().searchItems('');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const CCSearchPage(keyword: '')));
+                      },
                       child: Text(
                         "See all",
                         style: Theme.of(context)
@@ -126,15 +179,6 @@ class _CCHomeState extends State<CCHome> {
               ),
             ),
             _chips(),
-            // GridView.builder(
-            //   gridDelegate:
-            //       SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-            //   itemCount: items.length,
-            //   shrinkWrap: true,
-            //   itemBuilder: (context, index) {
-            //     return _itemGird(index);
-            //   },
-            // )
             Padding(
               padding: getPadding(left: 20, right: 20),
               child: StaggeredGrid.count(

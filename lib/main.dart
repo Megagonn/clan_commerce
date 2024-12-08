@@ -2,6 +2,7 @@
 
 import 'package:clan_commerce/providers/cart_provider.dart';
 import 'package:clan_commerce/providers/category_provider.dart';
+import 'package:clan_commerce/providers/search_provider.dart';
 import 'package:clan_commerce/splash.dart';
 import 'package:clan_commerce/themes/global_themes.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,8 @@ void main() {
   runApp(MultiProvider(
     providers:[
       ChangeNotifierProvider(create: (context)=> CategoryProvider()),
-      ChangeNotifierProvider(create: (context)=> CartProvider())
+      ChangeNotifierProvider(create: (context)=> CartProvider()),
+      ChangeNotifierProvider(create: (context)=> SearchProvider()),
     ],
     child: const MyApp(),
   ));

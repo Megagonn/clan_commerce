@@ -114,7 +114,7 @@ class _StockItemDetailsState extends State<StockItemDetails> {
                   ),
                   Text(
                     widget.stockItemModel.description,
-                    style: Theme.of(context).textTheme.displayLarge,
+                    style: Theme.of(context).textTheme.displayMedium,
                   ),
                   SizedBox(
                     height: getVerticalSize(20),
