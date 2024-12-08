@@ -1,6 +1,6 @@
 # clan_commerce
 
-An e-commerce UI challenge.
+An e-commerce UI and Logic challenge.
 
 # Get APK file
 
