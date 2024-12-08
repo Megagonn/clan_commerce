@@ -2,6 +2,10 @@
 
 An e-commerce UI challenge.
 
+# Get APK file
+
+![Download the APK file](https://github.com/megagonn/clan_commerce/blob/main/cc.apk?raw=true)
+
 # screen shots
 
 ![Screen shot 1](https://github.com/megagonn/clan_commerce/blob/main/s1.png?raw=true)
