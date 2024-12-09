@@ -34,20 +34,20 @@ abstract class AppTheme {
         // colorScheme: ColorScheme.fromSeed(seedColor: GlobalColors.primary),
         useMaterial3: true,
         visualDensity: visualDensity,
-        textTheme:  TextTheme(
+        textTheme:  const TextTheme(
           displaySmall: TextStyle(
               fontFamily: "Aeonik",
-              fontSize: getFontSize(14),
+              fontSize: 14,
               fontWeight: FontWeight.w400,
               color: GlobalColors.primary),
           displayMedium: TextStyle(
               fontFamily: "Aeonik",
-              fontSize: getFontSize(16),
+              fontSize: 16,
               fontWeight: FontWeight.w500,
               color: GlobalColors.primary),
           displayLarge: TextStyle(
               fontFamily: "Aeonik",
-              fontSize: getFontSize(20),
+              fontSize: 20,
               fontWeight: FontWeight.w700,
               color: GlobalColors.primary),
         ),
@@ -58,19 +58,19 @@ abstract class AppTheme {
         // ),
         scaffoldBackgroundColor: _LightColors.background,
         primarySwatch: Colors.yellow,
-        appBarTheme:  AppBarTheme(
+        appBarTheme:  const AppBarTheme(
             elevation: 0,
             centerTitle: false,
             titleTextStyle:
-                TextStyle(fontSize: getFontSize(25), fontWeight: FontWeight.bold),
+                TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             foregroundColor: _DarkColors.background,
             backgroundColor: GlobalColors.white),
         cardColor: _LightColors.background,
-        primaryTextTheme:  TextTheme(
+        primaryTextTheme:  const TextTheme(
           // headline6: const TextStyle(color: GlobalColors.textDark),
           displayLarge: TextStyle(
               color: GlobalColors.primary,
-              fontSize: getFontSize(20),
+              fontSize: 20,
               fontWeight: FontWeight.w700),
         ),
         iconTheme: const IconThemeData(color: GlobalColors.primary),

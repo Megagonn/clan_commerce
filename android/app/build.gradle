@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.clan_commerce"
+    namespace = "com.example.cc"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 

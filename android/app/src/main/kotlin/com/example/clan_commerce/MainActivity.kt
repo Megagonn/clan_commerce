@@ -1,4 +1,4 @@
-package com.example.clan_commerce
+package com.example.cc
 
 import io.flutter.embedding.android.FlutterActivity
 

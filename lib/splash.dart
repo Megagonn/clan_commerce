@@ -8,14 +8,14 @@ class CCSplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FlutterSplashScreen.scale(
+      body: FlutterSplashScreen.fadeIn(
         backgroundColor: Colors.white,
         childWidget: Container(
           decoration: const BoxDecoration(
             color: Colors.white,
             image: DecorationImage(
-              image: AssetImage("assets/images/2.png"),
-              fit: BoxFit.fill,
+              image: AssetImage("assets/images/1.png"),
+              fit: BoxFit.contain,
             ),
           ),
         ),
