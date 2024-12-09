@@ -5,6 +5,7 @@ An e-commerce UI and Logic challenge.
 # Get APK file
 
 - [Download the APK file](https://github.com/megagonn/clan_commerce/raw/main/cc.apk)
+- [Download the APK file via Google drive](https://drive.google.com/file/d/1VteF71YkbiKOSNO7YjgfUtPi8QYCp5KT/view?usp=drive_link)
 
 # screen shots
 
